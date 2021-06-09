@@ -2,8 +2,8 @@ Write tests for the `validateEmail` function, which takes the `email` string and
 
 Requirements to valid email:
 - username could be 1-64 characters inclusive: Latin (Aa-Zz), numbers, some special characters (`+`, `-`,` _`);
-- hostname could be 1-63 characters inclusive: Latin (Aa-Zz), numbers, some special characters (`+`, `-`,` _`);
-- domain could be 1-63 characters inclusive: Latin (Aa-Zz), numbers, some special characters (`+`, `-`,` _`);
+- hostname could be 1-63 characters inclusive: Latin (Aa-Zz), numbers, some special characters (`-`,` _`);
+- domain could be 1-63 characters inclusive: Latin (Aa-Zz), numbers, some special characters (`-`,` _`);
 - max length 75 characters inclusive.
 
 The function does not check the uniqueness of the email.  

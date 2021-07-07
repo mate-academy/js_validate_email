@@ -63,10 +63,6 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('email@.gmail.com')).toBeFalsy();
   });
 
-  it(`An email should not be start with \`.\``, () => {
-    expect(validateEmail('.email@gmail.com')).toBeFalsy();
-  });
-
   it(`Double dots are not allowed`, () => {
     expect(validateEmail('em:ail@gmail.com')).toBeFalsy();
   });

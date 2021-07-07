@@ -8,12 +8,31 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return boolean`, () => {
-
+    expect(typeof validateEmail('')).toEqual('boolean');
   });
 
-  it(`should return 'true' for the valid email...`, () => {
-
+  it(`should return 'true' email with valid data`, () => {
+    expect(validateEmail('ol0loh_ka.oloLo-vich@gmail.com'))
+      .toBeTruthy();
   });
 
-  // write more tests here
+  it(`should return 'false' if personal_info starts with a dot`, () => {
+    expect(validateEmail('.ololoshka.ololovich@gmail.com')).toBeFalsy();
+  });
+
+  it(`should return 'false' if personal_info ends with a dot`, () => {
+    expect(validateEmail('ololoshka.ololovich.@gmail.com')).toBeFalsy();
+  });
+
+  it(`should return 'false' if personal_info has double dot`, () => {
+    expect(validateEmail('ololoshka..ololovich@gmail.com')).toBeFalsy();
+  });
+
+  it(`should return 'false' if domein starts with dot`, () => {
+    expect(validateEmail('ololoshka.ololovich@.gmail.com')).toBeFalsy();
+  });
+
+  it(`should return 'false' if domein gas double dot`, () => {
+    expect(validateEmail('ololoshka.ololovich@..gmail.com')).toBeFalsy();
+  });
 });

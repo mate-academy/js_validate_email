@@ -11,8 +11,8 @@ describe(`Function 'validateEmail':`, () => {
     expect(typeof validateEmail('t@t.t')).toBe('boolean');
   });
 
-  it(`should return 'true' for the valid email 'test.1@g-mail.com'`, () => {
-    expect(validateEmail('test.1@g-mail.com')).toBe(true);
+  it(`should return 'true' for the valid email 't_est.1@g-mail.com'`, () => {
+    expect(validateEmail('t_est.1@g-mail.com')).toBe(true);
   });
 
   it(`should return 'false' for the email with Cyrillic letter`, () => {
@@ -57,7 +57,11 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return 'false' for the email with space`, () => {
-    expect(validateEmail('test 1@mailcom')).toBe(false);
+    expect(validateEmail('test 1@mail.com')).toBe(false);
+  });
+
+  it(`should return 'false' for the email with double '@'`, () => {
+    expect(validateEmail('test1@@mail.com')).toBe(false);
   });
 
   // write more tests here

@@ -20,10 +20,9 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('.artur.lypivskyi_13@gmail.com')).toBe(false);
   });
 
-  // this test doesn't work, although it should!
-  // it(`should return 'false' for the email that ends with dot ('.')`, () => {
-  //   expect(validateEmail('artur.lypivskyi_13@gmail.com.')).toBe(false);
-  // });
+  it(`should return 'false' if personal_info part ends with dot ('.')`, () => {
+    expect(validateEmail('artur.lypivskyi_13.@gmail.com')).toBe(false);
+  });
 
   it(`should return 'false' for the email that contain
   double dots ('..')`, () => {

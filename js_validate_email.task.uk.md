@@ -11,7 +11,7 @@
 Приклади:
 ```js
 validateEmail('test@mail.com') === true
-validateEmail('t@q.c') === false
+validateEmail('t@q.c') === true
 validateEmail('false@email') === false
 ```
 

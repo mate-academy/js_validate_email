@@ -40,5 +40,10 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('45sagmail.com')).toBeFalsy();
   });
 
+  it(`should return 'false' for the email
+  without @@ 45sa@@gmail.com`, () => {
+    expect(validateEmail('45sa@@gmail.com')).toBeFalsy();
+  });
+
   // write more tests here
 });

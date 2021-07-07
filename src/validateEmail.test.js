@@ -45,5 +45,10 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('45sa@@gmail.com')).toBeFalsy();
   });
 
+  it(`should return 'false' for the email
+  with cyrillic letters Фрaf45dd.com`, () => {
+    expect(validateEmail('Фрaf45dd.com')).toBeFalsy();
+  });
+
   // write more tests here
 });

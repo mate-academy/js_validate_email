@@ -23,15 +23,11 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('hello96@.ukr.net')).toBe(false);
   });
 
-  it(`should return 'true' if email contain character`, () => {
+  it(`should return 'true' if email contain special character`, () => {
     expect(validateEmail('hel-lo96@ukr.net')).toBe(true);
   });
 
   it(`should return 'false' if email doesn't contain @`, () => {
     expect(validateEmail('hello96ukr.net')).toBe(false);
-  });
-
-  it(`should return 'true' if email contain digits`, () => {
-    expect(validateEmail('h1e2l3l4o5@ukr.net')).toBe(true);
   });
 });

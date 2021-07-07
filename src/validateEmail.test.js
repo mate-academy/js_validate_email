@@ -8,12 +8,43 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return boolean`, () => {
-
+    expect(typeof validateEmail('test')).toBeTruthy();
   });
 
-  it(`should return 'true' for the valid email...`, () => {
-
+  it(`should return 'true' for the valid email
+  "Olena.Vdovychenko1997@gmail.com"`, () => {
+    expect(validateEmail('Olena.Vdovychenko1997@gmail.com')).toBeTruthy();
   });
 
-  // write more tests here
+  it(`should return 'true' for the valid email "Olena.Vd@i-mail7.com"`, () => {
+    expect(validateEmail('Olena.Vd@i-mail7.com')).toBeTruthy();
+  });
+
+  it(`should return 'false' for the invalid email "Ena$Vd@icloud.com"`, () => {
+    expect(validateEmail('Ena$Vd@icloud.com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the invalid email "Ena!Vd@ukr.net"`, () => {
+    expect(validateEmail('Ena!Vd@ukr.net')).toBeFalsy();
+  });
+
+  it(`email should not start with dot symbol`, () => {
+    expect(validateEmail('.Olena@gmail.com')).toBeFalsy();
+  });
+
+  it(`email should not end with dot symbol`, () => {
+    expect(validateEmail('Olena.@gmail.com')).toBeFalsy();
+  });
+
+  it(`domain should not start with dot symbol`, () => {
+    expect(validateEmail('Olena@.mail.com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email with double dots`, () => {
+    expect(validateEmail('Olena..1997@gmail.com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email without "@"`, () => {
+    expect(validateEmail('Olenagmail.com')).toBeFalsy();
+  });
 });

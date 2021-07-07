@@ -11,7 +11,7 @@ The function does not check the uniqueness of the email.
 Examples:
 ```js
 validateEmail('test@mail.com') === true
-validateEmail('t@q.c') === false
+validateEmail('t@q.c') === true
 validateEmail('false@email') === false
 ```
 

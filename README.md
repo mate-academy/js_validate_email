@@ -1,4 +1,4 @@
-Write tests for the `validateEmail` function, which takes the `email` string and returns `true` for valid email, and` false` for invalid.  
+Write tests for the `validateEmail` function, which takes the `email` string and returns `true` for valid email, and `false` for invalid.  
 
 Requirements to valid email:
 - username could be 1-64 characters inclusive: Latin (Aa-Zz), numbers, some special characters (`+`, `-`,` _`);

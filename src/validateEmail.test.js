@@ -36,6 +36,10 @@ describe(`Function 'validateEmail':`, () => {
   it(`should return 'false' if email dont contain domain : opa@com`, () => {
     expect(validateEmail('opa@com')).toBe(false);
   });
+  
+    it(`should return 'false' if email don't have @: .ghjsdflkj.com`, () => {
+    expect(validateEmail('.ghjsdflkj.com')).toBe(false);
+  });
 
   it(`should return 'false' if email contains 
   space in the beginning:  sdf@asdflkj.com`, () => {

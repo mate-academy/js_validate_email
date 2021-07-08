@@ -32,16 +32,12 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('.Olena@gmail.com')).toBeFalsy();
   });
 
-  it(`email should not end with dot symbol`, () => {
-    expect(validateEmail('Olena.@gmail.com')).toBeFalsy();
-  });
-
   it(`domain should not start with dot symbol`, () => {
     expect(validateEmail('Olena@.mail.com')).toBeFalsy();
   });
 
-  it(`should return 'false' for the email with double dots`, () => {
-    expect(validateEmail('Olena..1997@gmail.com')).toBeFalsy();
+  it(`should return 'false' for the email with double dot`, () => {
+    expect(validateEmail('Olena:1997@gmail.com')).toBeFalsy();
   });
 
   it(`should return 'false' for the email without "@"`, () => {

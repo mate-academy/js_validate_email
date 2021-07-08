@@ -56,4 +56,34 @@ describe(`Function 'validateEmail':`, () => {
     () => {
       expect(validateEmail('Tarasbudzhak@gmail.com')).toBeTruthy();
     });
+
+  it(`should return 'true' if  has Eng letters, numbers and characters `,
+    () => {
+      expect(validateEmail('Tarasbudzhak@gmail.com')).toBeTruthy();
+    });
+
+  it(`should return 'true' if has only English letters in personal_info`,
+    () => {
+      expect(validateEmail('Tarasbudzhak@gmail.com')).toBeTruthy();
+    });
+
+  it(`should return 'true' if has numbers and Eng letters in personal_info`,
+    () => {
+      expect(validateEmail('Tarasb123@gmail.com')).toBeTruthy();
+    });
+
+    it(`should return 'false' if has only English nubmers in personal_info`,
+    () => {
+      expect(validateEmail('0123456789@gmail.com')).toBeFalsy();
+    });
+
+  it(`should return 'false' if has only characters in personal_info`,
+    () => {
+      expect(validateEmail('!$ % &*+-/=''?^_{|}~@gmail.com')).toBeFalsy();
+    });
+
+    it(`personal_info shouldn't be case sensitive`,
+    () => {
+      expect(validateEmail('TarAsBUDZHAK@gmail.com')).toBeTruthy();
+    });
 });

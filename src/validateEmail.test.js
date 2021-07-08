@@ -54,4 +54,10 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('.test23@aasd.com'))
       .toBe(false);
   });
+
+  it(`should return 'false' for the email where domain start with dot
+   test72@.mail.com`, () => {
+    expect(validateEmail('test72@.mail.com'))
+      .toBe(false);
+  });
 });

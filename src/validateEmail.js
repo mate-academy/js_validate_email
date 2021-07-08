@@ -1,51 +1,19 @@
 'use strict';
 
-describe(`Function 'validateEmail':`, () => {
-  const validateEmail = require('./validateEmail');
+/**
+ * @param {string} email
+ *
+ * @returns {boolean}
+ */
+function validateEmail(email) {
+  // eslint-disable-next-line
+  const validEmailMask = new RegExp(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\./i);
 
-  it(`should be declared`, () => {
-    expect(validateEmail).toBeInstanceOf(Function);
-  });
+  if (email.match(validEmailMask)) {
+    return true;
+  }
 
-  it(`should return boolean`, () => {
-    expect(typeof validateEmail('mail@mail.com')).toBe('boolean');
-  });
+  return false;
+}
 
-  it(`should return 'true' for the email: u.ser.2021@ma-il.com`, () => {
-    expect(validateEmail('u.ser.2021@ma-il.com')).toBeTruthy();
-  });
-
-  it(`should return 'false' for the email with non English letters`, () => {
-    expect(validateEmail('юзер2021@mail.com')).toBeFalsy();
-  });
-
-  it(`should return 'false' for the email without @`, () => {
-    expect(validateEmail('user2021.mail.com')).toBeFalsy();
-  });
-
-  it(`should return 'false' for the email with double dot '..'`, () => {
-    expect(validateEmail('user..2021@mail.com')).toBeFalsy();
-  });
-
-  it(`should return 'true' for the email a@a.a`, () => {
-    expect(validateEmail('a@a.a')).toBeTruthy();
-  });
-
-  it(`should return 'false' for the email starts with dot '.'`, () => {
-    expect(validateEmail('.mail@mail.com')).toBeFalsy();
-  });
-
-  it(`should return 'false' for the email without domain name`,
-    () => {
-      expect(validateEmail('mail@.com')).toBeFalsy();
-    });
-
-  it(`should return 'false' for the email with 'personal_info'`, () => {
-    expect(validateEmail('@mail.com')).toBeFalsy();
-  });
-
-  it(`should return 'false' for the email with domain starts with dot '.'`,
-    () => {
-      expect(validateEmail('usermail@.mail.com')).toBeFalsy();
-    });
-});
+module.exports = validateEmail;

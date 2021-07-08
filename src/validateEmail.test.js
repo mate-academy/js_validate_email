@@ -12,7 +12,7 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return 'true' for the email: user.}2021@mail.com`, () => {
-    expect(validateEmail('u.ser.2021@ma-il.com')).toBeTruthy();
+    expect(validateEmail('u_se-r.2021@ma-il.com')).toBeTruthy();
   });
 
   it(`should return 'false' for the email with non English letters`, () => {

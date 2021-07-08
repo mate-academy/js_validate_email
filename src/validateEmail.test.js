@@ -11,46 +11,30 @@ describe(`Function 'validateEmail':`, () => {
     expect(typeof validateEmail('email')).toBe('boolean');
   });
 
-  it(`should return 'true' for the valid email...`, () => {
+  it(`should return 'true' for the valid email`, () => {
     expect(validateEmail('Email@gmail.com')).toBeTruthy();
-  });
-
-  // write more tests here
-
-  it(`The personal_info part can contain English letter`, () => {
-    expect(validateEmail('engl1sh@gmail.com')).toBeTruthy();
   });
 
   it(`The personal_info part can't contain not English letter`, () => {
     expect(validateEmail('кirillic@gmail.com')).toBeFalsy();
   });
 
-  it(`The personal_info part can contain digits`, () => {
-    expect(validateEmail('241241@gmail.com')).toBeTruthy();
-  });
-
-  /* it(`The personal_info part can't contain Characters: ! # $ % & ' * + - /
-   = ? ^ _ \` { | } ~`, () => {
-    expect(validateEmail('t!#$%^&*y@gmail.com')).toBeFalsy();
-  }); */
-
-  it(`The personal_info part can contain character \`.\` 
-  it can be provided that it is not the first character 
-  or last character and it will not come one after the other.`, () => {
+  it(`The personal_info part can contain character '.'
+  if it isn't first or last character and not come after the one`, () => {
     expect(validateEmail('e.mai.l@gmail.com')).toBeTruthy();
   });
 
-  it(`The personal_info part can contain character \`.\` 
+  it(`The personal_info part can contain character '.'
   but it can't be the first character`, () => {
     expect(validateEmail('.e.mai.l@gmail.com')).toBeFalsy();
   });
 
-  it(`The personal_info part can contain character \`.\` 
+  it(`The personal_info part can contain character '.'
   but it can't be the last character`, () => {
     expect(validateEmail('e.mai.l.@gmail.com')).toBeFalsy();
   });
 
-  it(`The personal_info part can contain character \`.\` 
+  it(`The personal_info part can contain character '.'
   but it can't come one after the other`, () => {
     expect(validateEmail('ema..il@gmail.com')).toBeFalsy();
   });

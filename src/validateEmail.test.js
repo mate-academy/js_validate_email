@@ -15,16 +15,6 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('email@kmail.xom')).toBe(true);
   });
 
-  // eslint-disable-next-line max-len
-  it(`should return 'true' for the valid email with one special character`, () => {
-    expect(validateEmail('check$thismaili@kmail.xom')).toBe(true);
-  });
-
-  // eslint-disable-next-line max-len
-  it(`should return 'true' for the valid email with multiple special characters`, () => {
-    expect(validateEmail("cheсk!'$%&*+-/=?^_{|}~maili@kmail.xom")).toBe(true);
-  });
-
   it(`should return 'true' for the valid email with dots`, () => {
     expect(validateEmail('ema.i.l@kmail.xom')).toBe(true);
   });
@@ -48,10 +38,5 @@ describe(`Function 'validateEmail':`, () => {
   // eslint-disable-next-line max-len
   it(`should return 'false' for the email with top level domain start with dot`, () => {
     expect(validateEmail('email@.kmail.xom')).toBe(false);
-  });
-
-  // eslint-disable-next-line max-len
-  it(`should return 'false' for the email with top level domain ends with dot`, () => {
-    expect(validateEmail('email@kmail.xom.')).toBe(false);
   });
 });

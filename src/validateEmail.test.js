@@ -33,11 +33,11 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('gh:j@asdflkj.com')).toBe(false);
   });
 
-  it(`should return 'false' if email dont contain domain : opa@com`, () => {
+  it(`should return 'false' if email don't contain domain : opa@com`, () => {
     expect(validateEmail('opa@com')).toBe(false);
   });
-  
-    it(`should return 'false' if email don't have @: .ghjsdflkj.com`, () => {
+
+  it(`should return 'false' if email don't have @: .ghjsdflkj.com`, () => {
     expect(validateEmail('.ghjsdflkj.com')).toBe(false);
   });
 
@@ -49,5 +49,18 @@ describe(`Function 'validateEmail':`, () => {
   it(`should return 'false' if email contains 
   space in the middle: sd f@asdflkj.com`, () => {
     expect(validateEmail('sd f@asdflkj.com')).toBe(false);
+  });
+
+  it(`should return 'false' if email don't contain name : @gmail.com`, () => {
+    expect(validateEmail('@gmail.com')).toBe(false);
+  });
+
+  it(`should return 'false' if email contain dot in the domain beginning 
+  : test@.gmail.com`, () => {
+    expect(validateEmail('test@.gmail.com')).toBe(false);
+  });
+
+  it(`should return 'false' if email don't contain domain: t@.com`, () => {
+    expect(validateEmail('t@.com')).toBe(false);
   });
 });

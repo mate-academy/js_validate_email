@@ -8,12 +8,59 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return boolean`, () => {
-
+    expect(typeof validateEmail('SDF@scom')).toBe('boolean');
   });
 
-  it(`should return 'true' for the valid email...`, () => {
-
+  it(`should return 'true' for the valid email: sdf@asdflkj.com`, () => {
+    expect(validateEmail('sdf@asdflkj.com')).toBe(true);
   });
 
-  // write more tests here
+  it(`should return 'false' for the invalid email: ЖЖЖ@asdflkj.com`, () => {
+    expect(validateEmail('ЖЖЖ@asdflkj.com')).toBe(false);
+  });
+
+  it(`should return 'false' if top 
+  Level domein start with dot: opa@.com`, () => {
+    expect(validateEmail('opa@.com')).toBe(false);
+  });
+
+  it(`should return 'false' if email starts with dot: .ghj@asdflkj.com`, () => {
+    expect(validateEmail('.ghj@asdflkj.com')).toBe(false);
+  });
+
+  it(`should return 'false' if email 
+  contains double dots: gh:j@asdflkj.com`, () => {
+    expect(validateEmail('gh:j@asdflkj.com')).toBe(false);
+  });
+
+  it(`should return 'false' if email don't contain domain : opa@com`, () => {
+    expect(validateEmail('opa@com')).toBe(false);
+  });
+
+  it(`should return 'false' if email don't have @: .ghjsdflkj.com`, () => {
+    expect(validateEmail('.ghjsdflkj.com')).toBe(false);
+  });
+
+  it(`should return 'false' if email contains 
+  space in the beginning:  sdf@asdflkj.com`, () => {
+    expect(validateEmail(' sdf@asdflkj.com')).toBe(false);
+  });
+
+  it(`should return 'false' if email contains 
+  space in the middle: sd f@asdflkj.com`, () => {
+    expect(validateEmail('sd f@asdflkj.com')).toBe(false);
+  });
+
+  it(`should return 'false' if email don't contain name : @gmail.com`, () => {
+    expect(validateEmail('@gmail.com')).toBe(false);
+  });
+
+  it(`should return 'false' if email contain dot in the domain beginning 
+  : test@.gmail.com`, () => {
+    expect(validateEmail('test@.gmail.com')).toBe(false);
+  });
+
+  it(`should return 'false' if email don't contain domain: t@.com`, () => {
+    expect(validateEmail('t@.com')).toBe(false);
+  });
 });

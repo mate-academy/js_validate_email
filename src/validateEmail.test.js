@@ -15,39 +15,40 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('Email@gmail.com')).toBeTruthy();
   });
 
-  it(`The personal_info part can't contain not English letter`, () => {
+  it(`should return 'false' if the personal_info part 
+  contain not English letter`, () => {
     expect(validateEmail('кirillic@gmail.com')).toBeFalsy();
   });
 
-  it(`The personal_info part can contain character '.'
-  if it isn't first or last character and not come after the one`, () => {
+  it(`should return 'true' if '.' character isn't first or last character
+  and not come after the one`, () => { // in the personal_info part
     expect(validateEmail('e.mai.l@gmail.com')).toBeTruthy();
   });
 
-  it(`The personal_info part can contain character '.'
-  but it can't be the first character`, () => {
+  it(`should return 'false' if character '.'is the first character`, () => {
+    // in the personal_info part
     expect(validateEmail('.e.mai.l@gmail.com')).toBeFalsy();
   });
 
-  it(`The personal_info part can contain character '.'
-  but it can't be the last character`, () => {
+  it(`should return 'false' if character '.' is the last character`, () => {
+    // in the personal_info part
     expect(validateEmail('e.mai.l.@gmail.com')).toBeFalsy();
   });
 
-  it(`The personal_info part can contain character '.'
-  but it can't come one after the other`, () => {
+  it(`should return 'false' if character '.' come one after the other`, () => {
+    // in the personal_info part
     expect(validateEmail('ema..il@gmail.com')).toBeFalsy();
   });
 
-  it(`Character '@' is required`, () => {
+  it(`should return 'false' if email doesn't contain '@'`, () => {
     expect(validateEmail('emailgmail.com')).toBeFalsy();
   });
 
-  it(`top Level domain can not start with dot \`.\``, () => {
+  it(`should return 'false' if top Level domain start with dot \`.\``, () => {
     expect(validateEmail('email@.gmail.com')).toBeFalsy();
   });
 
-  it(`Double dots are not allowed`, () => {
+  it(`should return 'false' if email contain double dots`, () => {
     expect(validateEmail('em:ail@gmail.com')).toBeFalsy();
   });
 });

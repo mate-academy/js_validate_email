@@ -12,55 +12,55 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return 'true' for the valid email 
-  which consists of english characters, "@" and "." symbols...`,
+  which consists of english characters, "@" and "." symbols`,
   () => {
     expect(validateEmail('helloworld@gmail.com')).toBe(true);
   });
 
   it(`should return 'true' for the valid email
-  which consists of numbers, "@" and "." symbols...`,
+  which consists of numbers, "@" and "." symbols`,
   () => {
     expect(validateEmail('12345@123.321')).toBe(true);
   });
 
   it(`should return 'false' for the email
-  which contain two "." symbols in a row...`,
+  which contain two "." symbols in a row`,
   () => {
     expect(validateEmail('hello..@mail.ru')).toBe(false);
   });
 
   it(`should return 'false' for the email
-  which does not contain "@" symbol...`,
+  which does not contain "@" symbol`,
   () => {
     expect(validateEmail('12345123.321')).toBe(false);
   });
 
   it(`should return 'false' for the email
-  which contain "." right after "@" symbol...`,
+  which contain "." right after "@" symbol`,
   () => {
     expect(validateEmail('12345@.123.321')).toBe(false);
   });
 
   it(`should return 'false' for the email
-  which contain at least one ":" symbol...`,
+  which contain at least one ":" symbol`,
   () => {
     expect(validateEmail('1234:5@123.321')).toBe(false);
   });
 
   it(`should return 'false' for the email
-  which does not contain "personal data" part...`,
+  which does not contain "personal data" part`,
   () => {
     expect(validateEmail('@123.321')).toBe(false);
   });
 
   it(`should return 'false' for the email
-  which contain non-latin characters...`,
+  which contain non-latin characters`,
   () => {
     expect(validateEmail('привет@123.321')).toBe(false);
   });
 
   it(`should return 'false' for the email
-  which starts with dot-symbol...`,
+  which starts with dot-symbol`,
   () => {
     expect(validateEmail('.hello@123.321')).toBe(false);
   });

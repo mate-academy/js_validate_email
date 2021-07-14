@@ -39,11 +39,11 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('frog17@ .ua')).toBe(false);
   });
 
-  it(`should return 'true' for the valid email...`, () => {
+  it(`should return 'false' for the invalid email 'F rog17@li.ua'`, () => {
     expect(validateEmail('F rog17@li.ua')).toBe(false);
   });
 
-  it(`should return 'true' for the valid email...`, () => {
+  it(`should return 'false' for the invalid email 'конь@li.ua'`, () => {
     expect(validateEmail('конь@li.ua')).toBe(false);
   });
 

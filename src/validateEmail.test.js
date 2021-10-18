@@ -23,12 +23,12 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('test_test@mail.com')).toBeTruthy();
   });
 
-  it(`should return 'true' for the email, if domian part contain digit`, () => {
+  it(`should return 'true' for the email, if domain part contain digit`, () => {
     expect(validateEmail('test@mail1.com')).toBeTruthy();
   });
 
   it(`should return 'true' for the email,
-   if domian part contain hyphen`, () => {
+   if domain part contain hyphen`, () => {
     expect(validateEmail('test@ma-il.com')).toBeTruthy();
   });
 
@@ -47,7 +47,7 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return 'false' for the email,
-   if top level domian starts with dot`, () => {
+   if top level domain starts with dot`, () => {
     expect(validateEmail('test@.mail.com')).toBeFalsy();
   });
 

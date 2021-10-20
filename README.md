@@ -1,18 +1,16 @@
 Write tests for the `validateEmail` function, which takes the `email` string and returns `true` for valid email, and `false` for invalid.  
 
-An email is a string (a subset of ASCII characters) separated into two parts by `@` symbol. a "personal_info" and a domain, that is personal_info@domain.  
+An email is a string (a subset of ASCII characters) separated into two parts by `@` symbol, a "personal_info" and a domain, that is personal_info@domain.  
 
 The personal_info part contains the following ASCII characters.  
 
-- English letters(Aa-Zz).
-- Digits.
-- Characters: ! $ % & ' * + - / = ? ^ _ { | } ~
-- Character `.` ( period, dot or fullstop) provided that it is not the first or last character and it will not come one after the other.
+- English letters (Aa-Zz)
+- digits
+- characters: ! $ % & ' * + - / = ? ^ _ { | } ~
+- character `.` ( period, dot or fullstop) provided that it is not the first or last character and it will not come one after the other.
 - @ is required
-- top Level domain can not start with dot `.` 
-- top level domain can not start with dot `.`
-- an email should not be start with `.`
-- double dots are not allowed
+- personal_info and domain can not start with dot `.`
+- double dots are not allowed in personal_info part
 
 The domain name part contains letters, digits, hyphens, and dots.
 

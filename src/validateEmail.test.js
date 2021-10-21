@@ -8,7 +8,12 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return boolean`, () => {
-    expect(validateEmail).toBeTruthy();
+    expect(typeof validateEmail('test@gmail.com')).toBe('boolean');
+  });
+
+  it(`should return 'false' for the valid email
+    with special characters`, () => {
+    expect(validateEmail('Tes&t@gmail.com')).toBeFalsy();
   });
 
   it(`should return 'true' for the valid email

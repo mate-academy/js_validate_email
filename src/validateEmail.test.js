@@ -8,7 +8,7 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return boolean`, () => {
-    expect(validateEmail).toBeTruthy();
+    expect(typeof validateEmail('pap1ap1a@papa.pap')).toBe('boolean');
   });
 
   it(`should return 'true' for the valid email - pap1apa@papa.pap`, () => {

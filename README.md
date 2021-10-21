@@ -6,11 +6,13 @@ The personal_info part contains the following ASCII characters.
 
 - English letters (Aa-Zz)
 - digits
-- characters: ! $ % & ' * + - / = ? ^ _ { | } ~
+- characters: - _
 - character `.` ( period, dot or fullstop) provided that it is not the first or last character and it will not come one after the other.
 - @ is required
+
 - personal_info and domain can not start with dot `.`
 - double dots are not allowed in personal_info part
+- not allowed characters: ! $ % & ' * + / = ? ^ { | } ~
 
 The domain name part contains letters, digits, hyphens, and dots.
 

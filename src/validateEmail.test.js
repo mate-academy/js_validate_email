@@ -12,7 +12,7 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return 'true' for the valid email...`, () => {
-
+    expect(validateEmail('adolas+666@gmail.com.')).toBe(true);
   });
 
   // write more tests here

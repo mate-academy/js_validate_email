@@ -30,14 +30,14 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return 'false' if domain starts with '.'`, () => {
-    expect(validateEmail('black888@gmailcom')).toBe(false);
+    expect(validateEmail('.black888@gmail.com')).toBe(false);
   });
 
   it(`should return 'false' if '.' is before '.'`, () => {
     expect(validateEmail('black..888@gmail.com')).toBe(false);
   });
 
-  it(`should return 'false' if email is without username`, () => {
+  it(`should return 'false' if email is without personal_info`, () => {
     expect(validateEmail('@gmail.com')).toBe(false);
   });
 

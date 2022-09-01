@@ -19,7 +19,7 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('adolas666@gmail.com')).toBe(true);
   });
 
-  it(`should return 'true' for the email '_'`, () => {
+  it(`should return 'true' for the email with '_' in 'personal_info' part`, () => {
     expect(validateEmail('adolas6_6_6@gmail.com')).toBe(true);
   });
 

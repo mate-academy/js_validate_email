@@ -12,7 +12,7 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return 'true' for the valid email`, () => {
-    expect(validateEmail('adolas666@gmail.com')).toBe(true);
+    expect(validateEmail('adolas@gmail.com')).toBe(true);
   });
 
   it(`should return 'true' for the email with integers`, () => {
@@ -58,7 +58,7 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('adolas666.@gmail.com')).toBe(false);
   });
 
-  it(`should return 'false' for the email that has two '.' in row`, () => {
+  it(`should return 'false' for the email that has two '.' in row in personal info part`, () => {
     expect(validateEmail('adola..s666@gmail.com')).toBe(false);
   });
 

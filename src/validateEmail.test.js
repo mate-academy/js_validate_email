@@ -23,25 +23,25 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('adolas6_6_6@gmail.com')).toBe(true);
   });
 
-  it(`should return 'true' for the email '-'`, () => {
+  it(`should return 'true' for the email '-' in 'personal_info' part`, () => {
     expect(validateEmail('adolas6-6-6@gmail.com')).toBe(true);
   });
 
   it(`should return 'true' for the email '.'
-    if email doesnt start or ends or doeasnt has two dots in row`, () => {
+    if email doesnt start or ends or doeasnt has two dots in row in 'personal_info' part`, () => {
     expect(validateEmail('adolas.666@gmail.com')).toBe(true);
   });
 
   it(`should return 'true' for the email which domain has:
-    -, . and integers`, () => {
+    -, . and integers in 'personal_info' part`, () => {
     expect(validateEmail('adolas.666@gma1l.com')).toBe(true);
   });
 
-  it(`should return 'true' for the email which domain has '-' in it `, () => {
+  it(`should return 'true' for the email which domain has '-' in 'personal_info' part`, () => {
     expect(validateEmail('adolas.666@gma-l.com')).toBe(true);
   });
 
-  it(`should return 'true' for the email which domain has . in it `, () => {
+  it(`should return 'true' for the email which domain has '.' in 'personal_info' part`, () => {
     expect(validateEmail('adolas.666@gma.l.com')).toBe(true);
   });
 
@@ -50,11 +50,11 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('adolasсус@gmail.com')).toBe(false);
   });
 
-  it(`should return 'false' for the email that starts with '.'`, () => {
+  it(`should return 'false' for the email that starts with '.' in 'personal_info' part`, () => {
     expect(validateEmail('.adolas666@gmail.com')).toBe(false);
   });
 
-  it(`should return 'false' for the email that ends with '.'`, () => {
+  it(`should return 'false' for the email that ends with '.' in 'personal_info' part`, () => {
     expect(validateEmail('adolas666.@gmail.com')).toBe(false);
   });
 
@@ -62,11 +62,11 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('adola..s666@gmail.com')).toBe(false);
   });
 
-  it(`should return 'false' for the email without '@'`, () => {
+  it(`should return 'false' for the email without '@' in 'personal_info' part`, () => {
     expect(validateEmail('adolas666gmail.com')).toBe(false);
   });
 
-  it(`should return 'false' for the email whitch domain starts with '.'`, () => {
+  it(`should return 'false' for the email whitch domain starts with '.' in 'personal_info' part`, () => {
     expect(validateEmail('adolas666@.gmail.com')).toBe(false);
   });
 

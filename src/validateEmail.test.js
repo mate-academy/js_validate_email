@@ -37,7 +37,7 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('adolas.666@gma1l.com')).toBe(true);
   });
 
-  it(`should return 'true' for the email which domain has - in it `, () => {
+  it(`should return 'true' for the email which domain has '-' in it `, () => {
     expect(validateEmail('adolas.666@gma-l.com')).toBe(true);
   });
 

@@ -11,8 +11,9 @@ describe(`Function 'validateEmail':`, () => {
 
   });
 
-  it(`should return 'true' for the valid email...`, () => {
-    expect(validateEmail('adolas+666@gmail.com.')).toBe(true);
+  it(`should return 'true' for the valid email`, () => {
+    expect(validateEmail('test838@gmail.com.'))
+      .toBeTruthy();
   });
 
   // write more tests here

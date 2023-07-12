@@ -51,4 +51,14 @@ describe(`Function 'validateEmail':`, () => {
     domain don't includes digits`, () => {
     expect(validateEmail('personal_info@gmail1.com')).toBe(true);
   });
+
+  it(`should return 'false' for an email which has a double dots'
+  + in the personal_info part`, () => {
+    expect(validateEmail('te:st@gmail.com')).toBe(false);
+  });
+
+  it(`should return 'false' for an email which includes these characters:
+    '! $ % & ' * + / = ? ^ { | } ~'`, () => {
+    expect(validateEmail('te&s!t@gmail.com')).toBe(false);
+  });
 });

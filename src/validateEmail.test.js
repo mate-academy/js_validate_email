@@ -14,7 +14,7 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return 'true' for the valid email`, () => {
-    const validEmail = 'test838@gmail.com.';
+    const validEmail = 'test838@gmail.com';
 
     expect(validateEmail(validEmail)).toBeTruthy();
   });
@@ -35,7 +35,7 @@ describe(`Function 'validateEmail':`, () => {
 
   it(`should return 'false' for an email
    ending with a dot`, () => {
-    const invalidEmail = 'test.@example.com.';
+    const invalidEmail = 'test.@example.com';
 
     expect(validateEmail(invalidEmail)).toBeFalsy();
   });

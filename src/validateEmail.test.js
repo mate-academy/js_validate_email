@@ -16,14 +16,35 @@ describe(`Function 'validateEmail':`, () => {
       .toBeTruthy();
   });
 
-    it(`should return 'false' for the invalid email`, () => {
+    it(`should return 'false' for the email with double dots`, () => {
     expect(validateEmail('test838@gmail..com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email with dot after '@'`, () => {
     expect(validateEmail('test838@.com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email starting with '.'`, () => {
     expect(validateEmail('.test838@gmail.com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email ending with '.'`, () => {
     expect(validateEmail('test838@gmail.com.')).toBeFalsy();
-    expect(validateEmail('test838@gmail com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email without '@'`, () => {
+    expect(validateEmail('test838gmail com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email with ',' instead of '.'`, () => {
     expect(validateEmail('test838@gmail,com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email with '@' in the domain part`, () => {
     expect(validateEmail('test838@gmail@com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email with '!' in the domain part`, () => {
     expect(validateEmail('test838@gmail!com')).toBeFalsy();
   });
 
@@ -50,3 +71,4 @@ describe(`Function 'validateEmail':`, () => {
   it(`should return 'false' for the email with '..'`, () => {
     expect(validateEmail('test838..test@gmail.com')).toBeFalsy();
   });
+});

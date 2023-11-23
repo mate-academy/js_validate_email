@@ -16,5 +16,59 @@ describe(`Function 'validateEmail':`, () => {
       .toBeTruthy();
   });
 
-  // write more tests here
+    it(`should return 'false' for the email with double dots`, () => {
+    expect(validateEmail('test838@gmail..com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email with dot after '@'`, () => {
+    expect(validateEmail('test838@.com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email starting with '.'`, () => {
+    expect(validateEmail('.test838@gmail.com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email ending with '.'`, () => {
+    expect(validateEmail('test838@gmail.com.')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email without '@'`, () => {
+    expect(validateEmail('test838gmail com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email with ',' instead of '.'`, () => {
+    expect(validateEmail('test838@gmail,com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email with '@' in the domain part`, () => {
+    expect(validateEmail('test838@gmail@com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email with '!' in the domain part`, () => {
+    expect(validateEmail('test838@gmail!com')).toBeFalsy();
+  });
+
+  it(`should return 'true' for the valid email`, () => {
+    expect(validateEmail('test838@gmail.com')).toBeTruthy();
+    expect(validateEmail('t@q.c')).toBeTruthy();
+    expect(validateEmail('test.name_838@gmail.com')).toBeTruthy();
+    expect(validateEmail('test-name_838@gmail.com')).toBeTruthy();
+    expect(validateEmail('test.name_838@subdomain.domain.com')).toBeTruthy();
+  });
+
+  it(`should return 'false' for the email without '@'`, () => {
+    expect(validateEmail('test838gmail.com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email starting with '.'`, () => {
+    expect(validateEmail('.test838@gmail.com')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email ending with '.'`, () => {
+    expect(validateEmail('test838@gmail.com.')).toBeFalsy();
+  });
+
+  it(`should return 'false' for the email with '..'`, () => {
+    expect(validateEmail('test838..test@gmail.com')).toBeFalsy();
+  });
 });

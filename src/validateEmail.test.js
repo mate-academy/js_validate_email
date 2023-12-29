@@ -16,5 +16,23 @@ describe(`Function 'validateEmail':`, () => {
       .toBeTruthy();
   });
 
-  // write more tests here
+  it(`should return 'false' for the not valid email`, () => {
+    expect(validateEmail('test838gmail.com.'))
+      .toBeFalsy();
+  });
+
+  it(`should return 'false' for the email, which starts with dot .`, () => {
+    expect(validateEmail('.test838@gmail.com.'))
+      .toBeFalsy();
+  });
+
+  it(`should return 'false' for the email, which includes  characters: ! $ % & ' * + / = ? ^ { | } ~`, () => {
+    expect(validateEmail('test838/@gmail.com.'))
+      .toBeFalsy();
+  });
+
+  it(`should return 'true' for the email there domain name part contains only one letter`, () => {
+    expect(validateEmail('t@gmail.com.'))
+      .toBeTruthy();
+  });
 });

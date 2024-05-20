@@ -12,23 +12,13 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return 'true' for the valid email`, () => {
-    expect(validateEmail('test838@gmail.com.'))
-      .toBeTruthy();
-  });
-
-  it(`should return 'true' for email with '-' symbol`, () => {
-    expect(validateEmail('test-er@mail.com'))
-      .toBeTruthy();
-  });
-
-  it(`should return 'true' for email with '_' symbol`, () => {
-    expect(validateEmail('test_er@mail.com'))
+    expect(validateEmail('test838@gmail.com'))
       .toBeTruthy();
   });
 
   it(`should return 'true' for email`
   + `with letters, digits, hypens and dots`, () => {
-    expect(validateEmail('tes.t_er123@mail.com'))
+    expect(validateEmail('te-s.t_er123@mail.com'))
       .toBeTruthy();
   });
 

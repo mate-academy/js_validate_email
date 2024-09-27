@@ -19,7 +19,7 @@ describe(`Function 'validateEmail':`, () => {
 
   describe('Invalid email formats', () => {
     it(`contains not allowed characters: ! $ % & ' * + / = ? ^ { | } ~`, () => {
-      expect(validateEmail('test$838@gmail.com.')).toBeFalsy();
+      expect(validateEmail('test$838@gmail.com')).toBeFalsy();
     });
 
     it(`does not contain '@'`, () => {

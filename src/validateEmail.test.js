@@ -13,15 +13,15 @@ describe(`Function 'validateEmail':`, () => {
 
   it(`should return 'true' for the valid email`, () => {
     expect(validateEmail('test838@gmail.com.')).toBeTruthy();
-    expect(validateEmail('userName.userSurname@gmail.com.')).toBeTruthy();
-    expect(validateEmail('anabella123Syphora@g.com.')).toBeTruthy();
+    expect(validateEmail('userName.userSurname@gmail.com')).toBeTruthy();
+    expect(validateEmail('anabella123Syphora@g.com')).toBeTruthy();
     expect(validateEmail('SirkoIvan@uk.com')).toBeTruthy();
   });
 
-  it(`should return 'true' for the valid email`, () => {
+  it(`should return 'false' for the valid email`, () => {
     expect(validateEmail('test!@#!@#!@gmail.com.')).toBeFalsy();
-    expect(validateEmail('.userName.userSurname.@gmail.com.')).toBeFalsy();
-    expect(validateEmail('anabella123Syphorag.com.')).toBeFalsy();
+    expect(validateEmail('.userName.userSurname.@gmail.com')).toBeFalsy();
+    expect(validateEmail('anabella123Syphorag.com')).toBeFalsy();
     expect(validateEmail('hjkhkjh5675.v')).toBeFalsy();
   });
 

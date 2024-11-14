@@ -152,13 +152,12 @@ describe(`Function 'validateEmail':`, () => {
   it(`should return 'false' for the email with dot at the end
     of the personal_info part`, () => {
     expect(validateEmail('test652.@gmail.com'))
-    .toBe(false);
-    });
-
-  it(`should return "false" for email with "." on start of email server`, () => {
-    expect(validateEmail(`email@.test.com.`))
       .toBe(false);
   });
 
-  
+  it(`should return "false" for email with "." 
+    on start of email server`, () => {
+    expect(validateEmail(`email@.test.com.`))
+      .toBe(false);
+  });
 });

@@ -43,9 +43,9 @@ describe(`Function 'validateEmail':`, () => {
       .toBeTruthy();
   });
 
-  it('should return "false" if "." or "," is on begening of email', () => {
-    const mail1 = '.email@test.com.';
-    const mail2 = ',email@test.com.';
+  it('should return "false" if "." or "," is on beginning of email', () => {
+    const mail1 = '.email@test.com';
+    const mail2 = ',email@test.com';
 
     expect(validateEmail(mail1))
       .toBe(false);
@@ -55,8 +55,8 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it('should return "false" if ",," or ".." is in email', () => {
-    const mail1 = 'ema,,il@test.com.';
-    const mail2 = 'em..ail@test.com.';
+    const mail1 = 'ema,,il@test.com';
+    const mail2 = 'em..ail@test.com';
 
     expect(validateEmail(mail1))
       .toBe(false);
@@ -122,7 +122,7 @@ describe(`Function 'validateEmail':`, () => {
 
   it(`should return 'false' for the email with dot at the end
     of the personal_info part`, () => {
-    expect(validateEmail('test652.@gmail.com'))
+    expect(validateEmail('test652.@gmail.com.'))
       .toBe(false);
   });
 

@@ -8,12 +8,12 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return boolean`, () => {
-    expect(validateEmail).toBeTruthy();
+    expect(typeof validateEmail("abc")).toBe("boolean");
   });
 
   it(`should return 'true' for the valid email`, () => {
-    expect(validateEmail("test838@gmail.com.")).toBe(true);
-    expect(validateEmail("Test838@gmail.com.")).toBe(true);
+    expect(validateEmail("test838@gmail.com")).toBe(true);
+    expect(validateEmail("Test838@gmail.com")).toBe(true);
   });
 
   it(`should return 'true' for a valid email

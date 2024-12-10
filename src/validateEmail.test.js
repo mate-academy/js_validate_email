@@ -22,18 +22,18 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return 'false' for emails with a dot at the start`, () => {
-    expect(validateEmail(".test838@gmail.com.")).toBe(false);
+    expect(validateEmail(".test838@gmail.com")).toBe(false);
   });
 
   it(`should return 'false' for an email with a dot at the end`, () => {
-    expect(validateEmail("test838.@gmail.com.")).toBe(false);
+    expect(validateEmail("test838.@gmail.com")).toBe(false);
   });
 
   it(`should return 'false' for an email without '@'`, () => {
-    expect(validateEmail("test838gmail.com.")).toBe(false);
+    expect(validateEmail("test838gmail.com")).toBe(false);
   });
 
   it(`should return 'false' for an email with 'not allowed characters'`, () => {
-    expect(validateEmail("test838!$%^&*{|}@gmail.com.")).toBe(false);
+    expect(validateEmail("test838!$%^&*{|}@gmail.com")).toBe(false);
   });
 });

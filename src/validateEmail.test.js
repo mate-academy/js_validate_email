@@ -9,11 +9,11 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return boolean`, () => {
-    expect(typeof validateEmail('test838@gmail.com.')).toBe('boolean');
+    expect(typeof validateEmail('test838@gmail.com')).toBe('boolean');
   });
 
   it(`should return 'true' for the valid email`, () => {
-    expect(validateEmail('test838@gmail.com.')).toBeTruthy();
+    expect(validateEmail('test838@gmail.com')).toBeTruthy();
   });
 
   it(`should return 'false' if email doesn't contain @`, () => {
@@ -32,7 +32,7 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('василий@gmail.com')).toBeFalsy();
   });
 
-  it(`should return 'true' if mail name contain one latin symbol`, () => {
+  it(`should return 'true' if mail name contain a single Latin character before the '@'`, () => {
     expect(validateEmail('a@gmail.com')).toBeTruthy();
   });
 

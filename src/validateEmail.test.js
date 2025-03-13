@@ -86,9 +86,8 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return 'false' for email with dot at the end of
-     "domain" "test@mail.com."`,
-  () => {
-    expect(validateEmail('test@mail.com.')).toBeFalsy();
+     "domain" "test@mail.com."`, () => {
+    expect(validateEmail('test.@mail.com.')).toBe(false);
   });
 
   it(`should return 'false' for empty string ""`, () => {

@@ -16,4 +16,4 @@ function validateEmail(email) {
   return false;
 }
 
-module.exports = validateEmail;
+module.exports = { validateEmail };

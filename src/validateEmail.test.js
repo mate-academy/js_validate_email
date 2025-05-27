@@ -1,20 +1,44 @@
 'use strict';
 
-describe(`Function 'validateEmail':`, () => {
-  const validateEmail = require('./validateEmail');
+const validateEmail = require('./validateEmail');
 
-  it(`should be declared`, () => {
-    expect(validateEmail).toBeInstanceOf(Function);
+describe('validateEmail', () => {
+  test('returns true for a valid email', () => {
+    expect(validateEmail('test@mail.com')).toBe(true);
+    expect(validateEmail('t@q.c')).toBe(true);
   });
 
-  it(`should return boolean`, () => {
-
+  test('returns false for an email missing @ symbol', () => {
+    expect(validateEmail('testmail.com')).toBe(false);
   });
 
-  it(`should return 'true' for the valid email`, () => {
-    expect(validateEmail('test838@gmail.com.'))
-      .toBeTruthy();
+  test('returns false for an email'
+    + 'with invalid characters in personal_info', () => {
+    expect(validateEmail('te!st@mail.com')).toBe(true);
+    expect(validateEmail('te$st@mail.com')).toBe(true);
   });
 
-  // write more tests here
+  test('returns false for an email with double dots in personal_info', () => {
+    expect(validateEmail('te..st@mail.com')).toBe(false);
+  });
+
+  test('returns false for an email starting with a dot', () => {
+    expect(validateEmail('.test@mail.com')).toBe(false);
+  });
+
+  test('returns false for an email with domain missing a dot', () => {
+    expect(validateEmail('test@mailcom')).toBe(false);
+  });
+
+  test('returns false for an email with invalid characters in domain', () => {
+    expect(validateEmail('test@mail!com')).toBe(false);
+  });
+
+  test('returns false for an email ending with a dot', () => {
+    expect(validateEmail('test.@mail.com')).toBe(false);
+  });
+
+  test('returns false for an email with spaces', () => {
+    expect(validateEmail('test @mail.com')).toBe(false);
+  });
 });

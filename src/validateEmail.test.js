@@ -12,20 +12,21 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return true for valid emails`, () => {
-    expect(validateEmail('test838@gmail.com.')).toBe(true);
-    expect(validateEmail('user.name@example.co.uk.')).toBe(true);
+    expect(validateEmail('test838@gmail.com')).toBe(true);
+    expect(validateEmail('user.name@example.co.uk')).toBe(true);
+    expect(validateEmail('john-doe@sub.domain.com')).toBe(true);
   });
 
   it(`should return false for emails missing "@"`, () => {
-    expect(validateEmail('userexample.com.')).toBe(false);
+    expect(validateEmail('userexample.com')).toBe(false);
   });
 
   it(`should return false for missing username`, () => {
-    expect(validateEmail('@example.com.')).toBe(false);
+    expect(validateEmail('@example.com')).toBe(false);
   });
 
   it(`should return false for emails without domain`, () => {
-    expect(validateEmail('user@.')).toBe(false);
+    expect(validateEmail('user@')).toBe(false);
   });
 
   it(`should return false for empty string`, () => {

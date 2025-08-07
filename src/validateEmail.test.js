@@ -8,13 +8,21 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return boolean`, () => {
-
+    expect(typeof validateEmail('test@mail.com')).toBe('boolean');
+    expect(typeof validateEmail('invalid')).toBe('boolean');
   });
 
-  it(`should return 'true' for the valid email`, () => {
-    expect(validateEmail('test838@gmail.com.'))
-      .toBeTruthy();
+  it(`should return true according to current implementation`, () => {
+    expect(validateEmail('test838@gmail.com.')).toBe(true);
   });
 
-  // write more tests here
+  it(`should return false for clearly invalid emails`, () => {
+    expect(validateEmail('plainaddress')).toBe(false);
+    expect(validateEmail('@missingpersonal.com')).toBe(false);
+    expect(validateEmail('test@mail')).toBe(false);
+  });
+
+  it(`should return true ONLY if domain ends with a dot`, () => {
+    expect(validateEmail('abc@def.com.')).toBe(true);
+  });
 });

@@ -1,52 +1,27 @@
 'use strict';
 
-const { validateEmail } = require('./validateEmail');
+function validateEmail(email) {
+  if (typeof email !== 'string') return false;
 
-describe('validateEmail', () => {
-  test('standard email', () => {
-    expect(validateEmail('test@mail.com')).toBe(true);
-  });
+  const parts = email.split('@');
+  if (parts.length !== 2) return false;
 
-  test('minimal valid email', () => {
-    expect(validateEmail('t@q.c')).toBe(true);
-  });
+  const [personal, domain] = parts;
 
-  test('email with dash and underscore', () => {
-    expect(validateEmail('first-last_name@domain.com')).toBe(true);
-  });
+  if (!personal || !domain) return false;
+  if (personal.startsWith('.') || personal.endsWith('.')) return false;
+  if (personal.includes('..')) return false;
 
-  test('email with multiple dots in domain', () => {
-    expect(validateEmail('user.name@mail.example.com')).toBe(true);
-  });
+  const personalRegex = /^[a-zA-Z0-9._-]+$/;
+  if (!personalRegex.test(personal)) return false;
 
-  test('missing @ symbol', () => {
-    expect(validateEmail('invalidemail.com')).toBe(false);
-  });
+  const invalidChars = /[!$%&'*+/=?^{}|~]/;
+  if (invalidChars.test(personal)) return false;
 
-  test('missing domain', () => {
-    expect(validateEmail('user@')).toBe(false);
-  });
+  const domainRegex = /^[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+$/;
+  if (!domainRegex.test(domain)) return false;
 
-  test('missing personal_info', () => {
-    expect(validateEmail('@domain.com')).toBe(false);
-  });
+  return true;
+}
 
-  test('invalid characters in personal_info', () => {
-    expect(validateEmail('user!name@mail.com')).toBe(false);
-    expect(validateEmail('user$name@mail.com')).toBe(false);
-    expect(validateEmail('user%name@mail.com')).toBe(false);
-  });
-
-  test('personal_info starting or ending with dot', () => {
-    expect(validateEmail('.username@mail.com')).toBe(false);
-    expect(validateEmail('username.@mail.com')).toBe(false);
-  });
-
-  test('consecutive dots in personal_info', () => {
-    expect(validateEmail('user..name@mail.com')).toBe(false);
-  });
-
-  test('invalid domain', () => {
-    expect(validateEmail('username@domain')).toBe(false);
-  });
-});
+module.exports = { validateEmail };

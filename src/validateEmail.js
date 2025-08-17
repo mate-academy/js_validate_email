@@ -2,7 +2,6 @@
 
 function validateEmail(email) {
   if (typeof email !== 'string') return false;
-
   const parts = email.split('@');
   if (parts.length !== 2) return false;
 
@@ -12,14 +11,14 @@ function validateEmail(email) {
   if (personal.startsWith('.') || personal.endsWith('.')) return false;
   if (personal.includes('..')) return false;
 
-  const personalAllowed = /^[a-zA-Z0-9._-]+$/;
-  if (!personalAllowed.test(personal)) return false;
+  const personalRegex = /^[A-Za-z0-9._-]+$/;
+  if (!personalRegex.test(personal)) return false;
 
-  const invalidChars = /[!$%&'*+/=?^{}|~]/;
+  const invalidChars = /[!$%&'*+/=?^`{|}~]/;
   if (invalidChars.test(personal)) return false;
 
-  const domainAllowed = /^[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+$/;
-  if (!domainAllowed.test(domain)) return false;
+  const domainRegex = /^[A-Za-z0-9.-]+\.[A-Za-z]{1,}$/;
+  if (!domainRegex.test(domain)) return false;
 
   return true;
 }

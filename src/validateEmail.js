@@ -1,19 +1,26 @@
 'use strict';
 
-/**
- * @param {string} email
- *
- * @returns {boolean}
- */
 function validateEmail(email) {
-  // eslint-disable-next-line
-  const validEmailMask = new RegExp(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\./i);
+  if (typeof email !== 'string') return false;
 
-  if (email.match(validEmailMask)) {
-    return true;
-  }
+  const parts = email.split('@');
+  if (parts.length !== 2) return false;
 
-  return false;
+  const [personalInfo, domain] = parts;
+
+  if (!personalInfo || !domain) return false;
+
+  if (personalInfo.startsWith('.') || personalInfo.endsWith('.')) return false;
+  if (personalInfo.includes('..')) return false;
+
+  if (!/^[A-Za-z0-9._-]+$/.test(personalInfo)) return false;
+  if (/[!$%&'*+/=?^{}|~]/.test(personalInfo)) return false;
+
+  if (!/^[A-Za-z0-9.-]+$/.test(domain)) return false;
+  if (domain.startsWith('-') || domain.endsWith('-')) return false;
+  if (!domain.includes('.')) return false;
+
+  return true;
 }
 
 module.exports = validateEmail;

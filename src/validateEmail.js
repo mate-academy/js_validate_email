@@ -24,4 +24,4 @@ function validateEmail(email) {
   return true;
 }
 
-module.exports = { validateEmail };
+module.exports = validateEmail;

@@ -1,19 +1,52 @@
 'use strict';
 
-/**
- * @param {string} email
- *
- * @returns {boolean}
- */
-function validateEmail(email) {
-  // eslint-disable-next-line
-  const validEmailMask = new RegExp(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\./i);
+const { validateEmail } = require('./validateEmail');
 
-  if (email.match(validEmailMask)) {
-    return true;
-  }
+describe('validateEmail', () => {
+  test('standard email', () => {
+    expect(validateEmail('test@mail.com')).toBe(true);
+  });
 
-  return false;
-}
+  test('minimal valid email', () => {
+    expect(validateEmail('t@q.c')).toBe(true);
+  });
 
-module.exports = validateEmail;
+  test('email with dash and underscore', () => {
+    expect(validateEmail('first-last_name@domain.com')).toBe(true);
+  });
+
+  test('email with multiple dots in domain', () => {
+    expect(validateEmail('user.name@mail.example.com')).toBe(true);
+  });
+
+  test('missing @ symbol', () => {
+    expect(validateEmail('invalidemail.com')).toBe(false);
+  });
+
+  test('missing domain', () => {
+    expect(validateEmail('user@')).toBe(false);
+  });
+
+  test('missing personal_info', () => {
+    expect(validateEmail('@domain.com')).toBe(false);
+  });
+
+  test('invalid characters in personal_info', () => {
+    expect(validateEmail('user!name@mail.com')).toBe(false);
+    expect(validateEmail('user$name@mail.com')).toBe(false);
+    expect(validateEmail('user%name@mail.com')).toBe(false);
+  });
+
+  test('personal_info starting or ending with dot', () => {
+    expect(validateEmail('.username@mail.com')).toBe(false);
+    expect(validateEmail('username.@mail.com')).toBe(false);
+  });
+
+  test('consecutive dots in personal_info', () => {
+    expect(validateEmail('user..name@mail.com')).toBe(false);
+  });
+
+  test('invalid domain', () => {
+    expect(validateEmail('username@domain')).toBe(false);
+  });
+});

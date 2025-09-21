@@ -34,7 +34,21 @@ describe(`Function 'validateEmail':`, () => {
 
   it(`should not have any special character
      on the end of personal info`, () => {
-    const result = validateEmail('test838]@gmail.com');
+    const result = validateEmail('test838?@gmail.com');
+
+    expect(result).toBeFalsy();
+  });
+
+  it(`should not have dot or consecutive dots
+       on the beginning of the personal_info part`, () => {
+    const result = validateEmail('.test838@gmail.com');
+
+    expect(result).toBeFalsy();
+  });
+
+  it(`should not have dot or consecutive dots
+         on the end of the personal_info part`, () => {
+    const result = validateEmail('test838.@gmail.com');
 
     expect(result).toBeFalsy();
   });

@@ -8,7 +8,10 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return boolean`, () => {
+    const exampleEmail = 'test@mail.com';
+    const result = validateEmail(exampleEmail);
 
+    expect(typeof result).toBe('boolean');
   });
 
   it(`should return 'true' for the valid email`, () => {
@@ -16,5 +19,30 @@ describe(`Function 'validateEmail':`, () => {
       .toBeTruthy();
   });
 
-  // write more tests here
+  it('should have only english letters', () => {
+    const result = validateEmail('teść-żółty838@gmail.com.');
+
+    expect(result).toBeFalsy();
+  });
+
+  it(`should not have any special character
+     on the beginning of personal info`, () => {
+    const result = validateEmail('!test838@gmail.com');
+
+    expect(result).toBeFalsy();
+  });
+
+  it(`should not have any special character
+     on the end of personal info`, () => {
+    const result = validateEmail('test838]@gmail.com');
+
+    expect(result).toBeFalsy();
+  });
+
+  it(`personal_info and domain_info
+     should be seperated on two parts by '@'`, () => {
+    const result = validateEmail('test838gmail.com.');
+
+    expect(result).toBeFalsy();
+  });
 });

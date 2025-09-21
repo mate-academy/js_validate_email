@@ -15,12 +15,12 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return 'true' for the valid email`, () => {
-    expect(validateEmail('test838@gmail.com.'))
+    expect(validateEmail('test838@gmail.com'))
       .toBeTruthy();
   });
 
   it('should have only english letters', () => {
-    const result = validateEmail('teść-żółty838@gmail.com.');
+    const result = validateEmail('teść-żółty838@gmail.com');
 
     expect(result).toBeFalsy();
   });

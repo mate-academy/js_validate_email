@@ -1,20 +1,40 @@
 'use strict';
 
-describe(`Function 'validateEmail':`, () => {
-  const validateEmail = require('./validateEmail');
+const validateEmail = require('./validateEmail');
 
-  it(`should be declared`, () => {
+describe("Function 'validateEmail'", () => {
+  it('should be declared', () => {
     expect(validateEmail).toBeInstanceOf(Function);
   });
 
-  it(`should return boolean`, () => {
-
+  it('should return boolean', () => {
+    expect(typeof validateEmail('test@mail.com')).toBe('boolean');
   });
 
-  it(`should return 'true' for the valid email`, () => {
-    expect(validateEmail('test838@gmail.com.'))
-      .toBeTruthy();
+  it('should return true for valid emails', () => {
+    expect(validateEmail('test@mail.com')).toBe(true);
+    expect(validateEmail('t@q.c')).toBe(true);
+    expect(validateEmail('user.name-123@example.co')).toBe(true);
   });
 
-  // write more tests here
+  it('should return false when @ is missing or too many @', () => {
+    expect(validateEmail('falseemail.com')).toBe(false);
+    expect(validateEmail('user@@example.com')).toBe(false);
+  });
+
+  it('should return false for personalInfo dot rules', () => {
+    expect(validateEmail('.user@example.com')).toBe(false);
+    expect(validateEmail('user.@example.com')).toBe(false);
+    expect(validateEmail('us..er@example.com')).toBe(false);
+  });
+
+  it('should return false for invalid domains', () => {
+    expect(validateEmail('user@.example.com')).toBe(false);
+    expect(validateEmail('user@examplecom')).toBe(false);
+  });
+
+  it('should return false for disallowed characters in personalInfo', () => {
+    expect(validateEmail('us!er@example.com')).toBe(false);
+    expect(validateEmail('us/er@example.com')).toBe(false);
+  });
 });

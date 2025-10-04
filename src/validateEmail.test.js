@@ -56,4 +56,24 @@ describe(`Function 'validateEmail':`, () => {
   it(`should return false for email with spaces`, () => {
     expect(validateEmail('test name@mail.com')).toBe(false);
   });
+
+  it(`should return true for email with hyphen in local part`, () => {
+    expect(validateEmail('first-last@mail.com')).toBe(true);
+  });
+
+  it(`should return true for email with underscore in local part`, () => {
+    expect(validateEmail('first_last@mail.com')).toBe(true);
+  });
+
+  it(`should return false for email with consecutive dots in local part`, () => {
+    expect(validateEmail('test..name@mail.com')).toBe(false);
+  });
+
+  it(`should return true for email with hyphen in domain`, () => {
+    expect(validateEmail('user@mail-server.com')).toBe(true);
+  });
+
+  it(`should return false for email with disallowed '#' in local part`, () => {
+    expect(validateEmail('user#name@mail.com')).toBe(false);
+  });
 });

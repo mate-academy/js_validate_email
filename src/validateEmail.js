@@ -16,7 +16,9 @@
  * @returns {boolean}
  */
 function validateEmail(email) {
-  const validEmailMask = /^[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+$/;
+  const validEmailMask = new RegExp(
+  '^[A-Za-z0-9_-]+(?:\\.[A-Za-z0-9_-]+)*@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)+$'
+);
   return validEmailMask.test(email);
 }
 

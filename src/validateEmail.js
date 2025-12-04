@@ -7,7 +7,7 @@
  */
 function validateEmail(email) {
   // eslint-disable-next-line
-  const validEmailMask = new RegExp(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\./i);
+  const validEmailMask = /^[A-Za-z0-9]+([._-]?[A-Za-z0-9]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+$/;
 
   if (email.match(validEmailMask)) {
     return true;

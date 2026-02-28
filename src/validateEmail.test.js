@@ -69,6 +69,12 @@ describe(`Function 'validateEmail':`, () => {
       .toBeFalsy();
   });
 
+  it(`should return 'false' for the email
+    where domain ends with a dot`, () => {
+    expect(validateEmail('test838@gmail.com.'))
+      .toBeFalsy();
+  });
+
   it(`should return 'true' for the email
     where domain includes digits and/or hyphens`, () => {
     expect(validateEmail('test838@G-M3IL.com'))
@@ -78,6 +84,12 @@ describe(`Function 'validateEmail':`, () => {
   it(`should return 'false' for the email
     where domain includes other special characters`, () => {
     expect(validateEmail('test838@gma!l.com'))
+      .toBeFalsy();
+  });
+
+  it(`should return 'false' for the email
+    where domain includes other special characters`, () => {
+    expect(validateEmail('test838@g_mail.com'))
       .toBeFalsy();
   });
 });

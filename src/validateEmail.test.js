@@ -20,6 +20,28 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('my-test.123_email@mail.com')).toBe(true);
   });
 
+  it(`should return 'false' if the domain part starts with a dot`, () => {
+    expect(validateEmail('user@.domain.com')).toBe(false);
+  });
+
+  it(`should return 'true' if the domain contains a valid combination of letters, digits, hyphens, and dots`, () => {
+    expect(validateEmail('user@sub-domain1.mail.com')).toBe(true);
+  });
+
+  it(`should not enforce uniqueness and always return 'true' on repeated calls with the same email`, () => {
+    const email = 'test@mail.com';
+
+    expect(validateEmail(email)).toBe(true);
+    expect(validateEmail(email)).toBe(true);
+    expect(validateEmail(email)).toBe(true);
+  });
+
+  it(`should not enforce length limits and validate long emails purely based on their format`, () => {
+    const longValidEmail = `${'a'.repeat(50)}.${'b'.repeat(50)}@${'sub-'.repeat(10)}domain.com`;
+
+    expect(validateEmail(longValidEmail)).toBe(true);
+  });
+
   it(`should return 'false' if the email is missing the '@' symbol`, () => {
     expect(validateEmail('testmail.com')).toBe(false);
   });
@@ -32,6 +54,8 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('test!@mail.com')).toBe(false);
     expect(validateEmail('user$name@mail.com')).toBe(false);
     expect(validateEmail('email%test@mail.com')).toBe(false);
+    expect(validateEmail('user&name@mail.com')).toBe(false);
+    expect(validateEmail('test+user@mail.com')).toBe(false);
   });
 
   it(`should return 'false' if a dot is placed at the start or at the end of personal_info`, () => {

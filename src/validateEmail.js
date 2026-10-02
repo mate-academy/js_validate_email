@@ -6,16 +6,10 @@
  * @returns {boolean}
  */
 function validateEmail(email) {
-  // eslint-disable-next-line
-  const validEmailMask = new RegExp(
-    /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\./i,
-  );
+  const validEmailMask =
+    /^[a-z0-9_-]+(?:\.[a-z0-9_-]+)*@[a-z0-9-]+(?:\.[a-z0-9-]+)+$/i;
 
-  if (email.match(validEmailMask)) {
-    return true;
-  }
-
-  return false;
+  return validEmailMask.test(email) && !/\s/.test(email);
 }
 
 module.exports = validateEmail;

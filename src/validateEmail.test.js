@@ -36,6 +36,9 @@ describe(`Function 'validateEmail':`, () => {
     '@mail.com',
     'test@',
     'false@email',
+    'test@mail.com.',
+    'test@mail.com!',
+    'test@mail.com@other.com',
   ])('should reject an email with invalid structure: %s', (email) => {
     expect(validateEmail(email)).toBe(false);
   });

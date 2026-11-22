@@ -48,7 +48,11 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return false if the domain hasn't '.'`, () => {
-    expect(validateEmail('test838@.gmailcom')).toBe(false);
+    expect(validateEmail('false@gmailcom')).toBe(false);
+  });
+
+  it(`should return false if email without '@'`, () => {
+    expect(validateEmail('falsegmail.com')).toBe(false);
   });
 
   it(`should return false if personal_info contains '..'`, () => {
@@ -60,7 +64,7 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return false if email contains '+'`, () => {
-    expect(validateEmail('!test838@gmail.com')).toBe(false);
+    expect(validateEmail('+test838@gmail.com')).toBe(false);
   });
 
   it(`should true if domain contains didgit`, () => {
